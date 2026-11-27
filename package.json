@@ -1,0 +1,14 @@
+{
+  "name": "nova-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Nova AI chat, running on Netlify with AI Gateway",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@netlify/server": "^0.1.6",
+    "openai": "^6.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+# Nova AI: a static chat page in public/ plus a Netlify Server (netlify/server/)
+# that streams model replies through Netlify AI Gateway.
+[build]
+  # No compile step: Netlify installs package.json dependencies automatically,
+  # the page is plain HTML/JS, and the server entry is bundled at deploy time.
+  command = "echo 'No build step needed'"
+  publish = "public"
+
+[build.environment]
+  # Netlify Server requires Node.js 24+.
+  NODE_VERSION = "24"
