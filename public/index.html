@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova AI</title>
+  <meta name="description" content="Nova AI — text and image chat." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">✦</span>
+        <div>
+          <h1>Nova AI</h1>
+          <p class="sub">Text and image chat · Qwen3.8 27B via Netlify AI Gateway</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="settingsBtn" class="ghost" aria-expanded="false" aria-controls="settings">Settings</button>
+        <button id="newChat" class="ghost">New chat</button>
+      </div>
+    </header>
+
+    <section id="settings" class="settings" hidden>
+      <label>Model
+        <select id="model"></select>
+      </label>
+      <label>Reasoning effort
+        <select id="reasoning">
+          <option value="off" selected>Off — answer immediately (default)</option>
+          <option value="low">Low — brief thinking</option>
+          <option value="medium">Medium</option>
+          <option value="high">High — often uses the whole budget</option>
+        </select>
+        <small id="reasoningNote">Applies to Qwen3.8 27B. Each reply is capped at 1024 tokens, and thinking counts toward it.</small>
+      </label>
+      <label>Temperature <output id="temperatureOut">1.00</output>
+        <input id="temperature" type="range" min="0" max="2" step="0.05" value="1" />
+      </label>
+      <label>Top-p <output id="topPOut">0.95</output>
+        <input id="topP" type="range" min="0" max="1" step="0.01" value="0.95" />
+      </label>
+      <label>Top-k <output id="topKOut">20</output>
+        <input id="topK" type="range" min="1" max="100" step="1" value="20" />
+      </label>
+    </section>
+
+    <main id="chat" class="chat" aria-live="polite">
+      <div id="empty" class="empty">
+        <span class="mark big" aria-hidden="true">✦</span>
+        <h2>What can I help with?</h2>
+        <p>Ask anything, or attach images and text files.</p>
+      </div>
+    </main>
+
+    <form id="composer" class="composer">
+      <div id="attachments" class="attachments"></div>
+      <div class="row">
+        <label class="attach" title="Attach images or text files">
+          <input id="files" type="file" multiple hidden />
+          <span aria-hidden="true">＋</span><span class="sr">Attach files</span>
+        </label>
+        <textarea id="input" rows="1" placeholder="Message Nova…" autocomplete="off"></textarea>
+        <button id="send" type="submit" class="send" aria-label="Send">↑</button>
+      </div>
+      <p class="hint">Enter to send · Shift+Enter for a new line · Paste or drop images</p>
+    </form>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
